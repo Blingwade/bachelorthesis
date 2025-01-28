@@ -2,5 +2,5 @@
 Peter Schropps bachelor thesis
 ## influxscript.py
 File for managing influxdb
-## postgresql.py
+## postgresqlscript.py
 File for managing postgresql
