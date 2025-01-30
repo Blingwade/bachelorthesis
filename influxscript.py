@@ -94,7 +94,12 @@ def manage_influxdb():
           |> filter(fn: (r) => r._measurement == "home")
         '''
         headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
+
+        starttime = time.time_ns()
+
         query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
+
+        endtime = time.time_ns()
 
         if query_response.status_code == 200:
             print("Query erfolgreich ausgeführt. Ergebnisse:")
@@ -107,8 +112,8 @@ def manage_influxdb():
 
     finally:
         # Warte 20 Sekunden, bevor der Container gestoppt wird
-        print("Warte 20 Sekunden...")
-        time.sleep(20)
+        #print("Warte 20 Sekunden...")
+        #time.sleep(20)
 
         # Container stoppen und löschen
         print("Stoppe den Container...")
@@ -116,6 +121,8 @@ def manage_influxdb():
             container.stop()
             container.remove()
             print("Container erfolgreich gestoppt und gelöscht.")
+            print("Laufzeit der Query: " + str(endtime - starttime))
+
         except Exception as e:
             print(f"Fehler beim Stoppen/Löschen des Containers: {e}")
 
