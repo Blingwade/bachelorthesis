@@ -33,7 +33,7 @@
         }
     },
     "example" : {
-        "influx": "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"home\")",
+        "influx": "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")",
         "postgres": "",
         "config":{
             "amountOfData":123

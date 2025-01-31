@@ -51,7 +51,7 @@ def manage_influxdb():
         token = None
         for line in result.stdout.split("\n"):
             if "admin" in line and len(line.split()) > 2:
-                token = line.split()[1]  # Token steht in der dritten Spalte
+                token = line.split()[1]  # Token steht in der zweiten Spalte
                 break
 
         if not token:
@@ -75,7 +75,6 @@ def manage_influxdb():
 
         f = open("data.txt","r")
         data = f.read().strip()
-        #print(data)
         f.close()
 
         response = requests.post(influxdb_url, params=params, headers=headers, data=data)
@@ -122,7 +121,7 @@ def manage_influxdb():
     finally:
         # Warte 20 Sekunden, bevor der Container gestoppt wird
         #print("Warte 20 Sekunden...")
-        time.sleep(10)
+        time.sleep(100)
 
         # Container stoppen und löschen
         print("Stoppe den Container...")
