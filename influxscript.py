@@ -3,6 +3,7 @@ import docker
 import time
 import requests
 import subprocess
+import json
 
 def manage_influxdb():
     # Docker-Client initialisieren
@@ -75,7 +76,7 @@ def manage_influxdb():
         f = open("data.txt","r")
         data = f.read().strip()
         #print(data)
-        #f.close()
+        f.close()
 
         response = requests.post(influxdb_url, params=params, headers=headers, data=data)
 
@@ -84,17 +85,25 @@ def manage_influxdb():
         else:
             print(f"Fehler beim Schreiben der Daten: {response.status_code}, {response.text}")
 
-
+        
         # Query ausführen
         print("Führe Query aus, um alle homes abzurufen...")
         query_url = "http://localhost:8086/api/v2/query"
-        query = '''
-        from(bucket: "example_bucket")
-          |> range(start: 0)
-          |> filter(fn: (r) => r._measurement == "home")
-        '''
+        #query = '''
+        #from(bucket: "example_bucket")
+        #  |> range(start: 0)
+        #  |> filter(fn: (r) => r._measurement == "home")
+        #'''
+        queryfile = open("queries.json", "r")
+        
+        query = json.loads(queryfile.read())["example"]["influx"]
+
+        print(query)
+
         headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
 
+
+        # Startzeit der Query Ausführung 
         starttime = time.time_ns()
 
         query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
@@ -103,7 +112,7 @@ def manage_influxdb():
 
         if query_response.status_code == 200:
             print("Query erfolgreich ausgeführt. Ergebnisse:")
-            print(query_response.text)
+            print(query_response.elapsed, query_response.text)
         else:
             print(f"Fehler bei der Query: {query_response.status_code}, {query_response.text}")
 
@@ -113,7 +122,7 @@ def manage_influxdb():
     finally:
         # Warte 20 Sekunden, bevor der Container gestoppt wird
         #print("Warte 20 Sekunden...")
-        #time.sleep(20)
+        time.sleep(10)
 
         # Container stoppen und löschen
         print("Stoppe den Container...")

@@ -1,0 +1,42 @@
+{
+
+    "count" : {
+
+    },
+    "integral" : {
+        "influx" : "",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "mean":{
+
+    },
+    "median":{
+
+    },
+    "mode":{
+
+    },
+    "spread":{
+
+    },
+    "stddev":{
+
+    },
+    "sum" : {
+        "influx" : "",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "example" : {
+        "influx": "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"home\")",
+        "postgres": "",
+        "config":{
+            "amountOfData":123
+        }
+    }
+}
