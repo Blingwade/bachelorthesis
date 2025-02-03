@@ -1,33 +1,57 @@
 {
 
     "count" : {
-
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> count()",
+        "postgres" : "SELECT COUNT(field1) FROM example_table;",
+        "config" : {
+            "amountOfData" : 1234556
+        }
     },
     "integral" : {
-        "influx" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> integral()",
         "postgres" : "",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "mean":{
-
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> mean()",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
     },
     "median":{
-
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> median()",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
     },
     "mode":{
-
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> mode()",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
     },
     "spread":{
-
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> spread()",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
     },
     "stddev":{
-
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> stddev()",
+        "postgres" : "",
+        "config" : {
+            "amountOfData" : 1234556
+        }
     },
     "sum" : {
-        "influx" : "",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> sum()",
+        "postgres" : "SELECT SUM(field1) FROM example_table;",
         "config" : {
             "amountOfData" : 1234556
         }

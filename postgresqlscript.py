@@ -2,6 +2,7 @@
 import docker
 import psycopg2
 import time
+import json
 
 def manage_postgresql_with_docker():
     # Docker-Client initialisieren
@@ -9,7 +10,7 @@ def manage_postgresql_with_docker():
 
     try:
         # PostgreSQL-Container starten
-        print("Starte PostgreSQL-Container...")
+        print("starting postgreSQL container...")
         container = client.containers.run(
             image="postgres:latest",
             name="postgresql-container",
@@ -21,14 +22,14 @@ def manage_postgresql_with_docker():
             ports={"5432/tcp": 5432},
             detach=True,
         )
-        print(f"PostgreSQL-Container gestartet. Container-ID: {container.id}")
+        print(f"PostgreSQL container started. Container-ID: {container.id}")
 
         # Wartezeit, bis der Container bereit ist
-        print("Warte, bis der PostgreSQL-Container bereit ist...")
+        print("waiting for the container...")
         time.sleep(10)
 
         # Verbindung zur PostgreSQL-Datenbank herstellen
-        print("Stelle Verbindung zur Datenbank her...")
+        print("connecting to database...")
         conn = psycopg2.connect(
             dbname="example_db",
             user="admin",
@@ -39,40 +40,47 @@ def manage_postgresql_with_docker():
         cur = conn.cursor()
 
         # Tabelle erstellen
-        print("Erstelle Tabelle...")
+        print("creating table...")
         create_table_query = """
-        CREATE TABLE IF NOT EXISTS sensor_data (
-            id SERIAL PRIMARY KEY,
-            sensor_name VARCHAR(50),
-            value FLOAT,
-            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        CREATE TABLE IF NOT EXISTS example_table (
+            tag1 varchar(50),
+            field1 float,
+            field2 float,
+            field3 float,
+            timestamp int
         );
         """
         cur.execute(create_table_query)
         conn.commit()
-        print("Tabelle erfolgreich erstellt.")
+        print("table created successfully")
 
         # Daten einfügen
-        print("Füge Beispieldaten hinzu...")
+        print("inserting example data...")
         insert_data_query = """
-        INSERT INTO sensor_data (sensor_name, value)
-        VALUES (%s, %s);
+        INSERT INTO example_table (tag1, field1, field2, field3, timestamp)
+        VALUES (%s, %s, %s, %s, %s);
         """
-        data = [
-            ("temperature_sensor", 22.5),
-            ("temperature_sensor", 23.1),
-            ("humidity_sensor", 45.3),
-            ("humidity_sensor", 46.7),
-            ("pressure_sensor", 1013.2),
-        ]
+        f = open("postgresqldata.txt" , "r")
+
+
+        # take lines from the file, separate them at every "," , delete /n and convert to tuple
+        data = [tuple(line.strip('\n').split(",")) for line in f.readlines()] # most cursed line of code i have ever written
+        f.close()
+  
         cur.executemany(insert_data_query, data)
         conn.commit()
         print(f"{cur.rowcount} Zeilen eingefügt.")
 
         # Daten abfragen
-        print("Frage Temperaturdaten ab...")
-        query = "SELECT * FROM sensor_data WHERE sensor_name = %s;"
-        cur.execute(query, ("temperature_sensor",))
+        print("Frage Beispieldaten ab...")
+
+        # import query
+
+
+        queryfile = open("queries.json", "r")
+        query = json.loads(queryfile.read())["sum"]["postgres"]
+        queryfile.close()
+        cur.execute(query)
         results = cur.fetchall()
 
         for row in results:
@@ -92,11 +100,13 @@ def manage_postgresql_with_docker():
         # Container stoppen und löschen
         print("Stoppe den Container...")
         try:
+
+            input("wait for input to close database")
             container.stop()
             container.remove()
-            print("Container erfolgreich gestoppt und gelöscht.")
+            print("Container stopped and deleted.")
         except Exception as e:
-            print(f"Fehler beim Stoppen/Löschen des Containers: {e}")
+            print(f"Exception while stopping/deleting the container: {e}")
 
 if __name__ == "__main__":
     manage_postgresql_with_docker()

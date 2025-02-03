@@ -2,7 +2,8 @@ import numpy
 
 numpy.random.seed(1)
 
-data = ""
+influxdata = ""
+postgresqldata = ""
 pure = numpy.linspace(0, 100, 100)
 
 for n in range(100):
@@ -14,9 +15,14 @@ for n in range(100):
     signal2 = pure[n] + noise2
     signal3 = pure[n] + noise3
 
-    data = data + "example_measurement,tag1=example_tag field1="+str(signal1) +",field2=" + str(signal2) + ",field3=" + str(signal3) + " " + str(1641024000 + n) + "\n"
-
-print(data)
+    influxdata = influxdata + "example_measurement,tag1=example_tag field1="+str(signal1) +",field2=" + str(signal2) + ",field3=" + str(signal3) + " " + str(1641024000 + n) + "\n"
+    postgresqldata = postgresqldata + "\'example_tag\'," + str(signal1) + "," + str(signal2) + "," + str(signal3) + "," + str(1641024000+n) + "\n"
+print(influxdata)
 
 f = open("data.txt", "w")
-f.write(data)
+f.write(influxdata)
+f.close()
+
+f = open("postgresqldata.txt", "w")
+f.write(postgresqldata)
+f.close()

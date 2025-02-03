@@ -93,10 +93,16 @@ def manage_influxdb():
         #  |> range(start: 0)
         #  |> filter(fn: (r) => r._measurement == "home")
         #'''
-        queryfile = open("queries.json", "r")
-        
-        query = json.loads(queryfile.read())["example"]["influx"]
 
+        try: 
+            yourinput = input("which function do you want to test\n")
+
+        except e:
+            print("no such query found")
+        queryfile = open("queries.json", "r")
+
+        query = json.loads(queryfile.read())[yourinput]["influx"]
+        #sumquery = json.loads(queryfile.read())["sum"]["influx"]
         print(query)
 
         headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
@@ -104,10 +110,11 @@ def manage_influxdb():
 
         # Startzeit der Query Ausführung 
         starttime = time.time_ns()
-
         query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
 
         endtime = time.time_ns()
+
+        
 
         if query_response.status_code == 200:
             print("Query erfolgreich ausgeführt. Ergebnisse:")
@@ -121,7 +128,7 @@ def manage_influxdb():
     finally:
         # Warte 20 Sekunden, bevor der Container gestoppt wird
         #print("Warte 20 Sekunden...")
-        time.sleep(100)
+        input("waiting for input to stop the program")
 
         # Container stoppen und löschen
         print("Stoppe den Container...")
