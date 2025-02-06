@@ -7,7 +7,8 @@ import json
 def manage_postgresql_with_docker():
     # Docker-Client initialisieren
     client = docker.from_env()
-
+    starttime = 0
+    endtime = 0
     try:
         # PostgreSQL-Container starten
         print("starting postgreSQL container...")
@@ -39,17 +40,33 @@ def manage_postgresql_with_docker():
         )
         cur = conn.cursor()
 
-        # Tabelle erstellen
+        # Tabellen erstellen
         print("creating table...")
         create_table_query = """
-        CREATE TABLE IF NOT EXISTS example_table (
+        CREATE TABLE IF NOT EXISTS example_table1 (
             tag1 varchar(50),
             field1 float,
             field2 float,
             field3 float,
             timestamp int
         );
+        CREATE TABLE IF NOT EXISTS example_table2 (
+            tag1 varchar(50),
+            field1 float,
+            field2 float,
+            field3 float,
+            timestamp int
+        );
+        CREATE TABLE IF NOT EXISTS example_table3 (
+            tag1 varchar(50),
+            field1 float,
+            field2 float,
+            field3 float,
+            timestamp int
+        );
+        CREATE INDEX idx_field1 ON example_table1(field1);
         """
+        # create index
         cur.execute(create_table_query)
         conn.commit()
         print("table created successfully")
@@ -57,17 +74,30 @@ def manage_postgresql_with_docker():
         # Daten einfügen
         print("inserting example data...")
         insert_data_query = """
-        INSERT INTO example_table (tag1, field1, field2, field3, timestamp)
-        VALUES (%s, %s, %s, %s, %s);
+        INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
+        VALUES (%s,%s,%s,%s,%s);
         """
         f = open("postgresqldata.txt" , "r")
 
 
         # take lines from the file, separate them at every "," , delete /n and convert to tuple
         data = [tuple(line.strip('\n').split(",")) for line in f.readlines()] # most cursed line of code i have ever written
+        #data = [line.strip('\n') for line in f.readlines()]
+        data_out = []
+        for t in data:
+            t_out = []
+            i = 0
+            for tE in t:
+                if tE == 'NULL':
+                    t_out.append(None)
+                else:
+                    t_out.append(tE)
+                i += 1
+            data_out.append(tuple(t_out))  
+
         f.close()
-  
-        cur.executemany(insert_data_query, data)
+        print(data_out)
+        cur.executemany(insert_data_query, data_out)
         conn.commit()
         print(f"{cur.rowcount} Zeilen eingefügt.")
 
@@ -77,10 +107,19 @@ def manage_postgresql_with_docker():
         # import query
 
 
+        try: 
+            yourinput = input("which function do you want to test\n")
+
+        except e:
+            print("no such query found")
         queryfile = open("queries.json", "r")
-        query = json.loads(queryfile.read())["sum"]["postgres"]
+
+        query = json.loads(queryfile.read())[yourinput]["postgres"]
         queryfile.close()
+
+        starttime = time.time_ns()
         cur.execute(query)
+        endtime = time.time_ns()
         results = cur.fetchall()
 
         for row in results:
@@ -90,6 +129,8 @@ def manage_postgresql_with_docker():
         print(f"Fehler: {e}")
 
     finally:
+        input("wait for input to close database")
+
         # Cursor und Verbindung schließen
         if 'cur' in locals():
             cur.close()
@@ -98,10 +139,9 @@ def manage_postgresql_with_docker():
             print("Verbindung zur PostgreSQL-Datenbank geschlossen.")
 
         # Container stoppen und löschen
+        print("query execution time: " + str(endtime - starttime))
         print("Stoppe den Container...")
         try:
-
-            input("wait for input to close database")
             container.stop()
             container.remove()
             print("Container stopped and deleted.")
@@ -110,3 +150,21 @@ def manage_postgresql_with_docker():
 
 if __name__ == "__main__":
     manage_postgresql_with_docker()
+
+
+def insert_data_query():
+
+        #"""
+        #CREATE TABLE IF NOT EXISTS example_table (
+        #    tag1 varchar(50),
+        #    field1 float,
+        #    field2 float,
+        #    field3 float,
+        #    timestamp int
+        #);
+        #CREATE INDEX idx_field1 ON example_table(field1);
+        #"""
+
+    insert_data_query = ""
+
+    return insert_data_query

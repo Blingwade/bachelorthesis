@@ -1,64 +1,64 @@
 {
 
     "count" : {
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> count()",
-        "postgres" : "SELECT COUNT(field1) FROM example_table;",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> count()",
+        "postgres" : "SELECT COUNT(field1) FROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "integral" : {
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> integral()",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> integral()",
+        "postgres" : "SELECT SUM((next_time - timestamp) * (field1 + next_field1) / 2) AS integral FROM (SELECT timestamp, field1, LEAD(timestamp) OVER (ORDER BY timestamp) AS next_time, LEAD(field1) OVER (ORDER BY timestamp) AS next_field1 FROM example_table1) t WHERE next_time IS NOT NULL;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "mean":{
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> mean()",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> mean()",
+        "postgres" : "SELECT AVG(field1) FROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "median":{
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> median()",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> median()",
+        "postgres" : "SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY field1) AS medianFROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "mode":{
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> mode()",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> mode()",
+        "postgres" : "SELECT field1 AS mode FROM example_table1 GROUP BY field1 ORDER BY COUNT(*) DESC LIMIT 1; ",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "spread":{
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> spread()",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> spread()",
+        "postgres" : "SELECT MAX(field1) - MIN(field1) AS spread FROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "stddev":{
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> stddev()",
-        "postgres" : "",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> stddev()",
+        "postgres" : "SELECT STDDEV_POP(field1), STDDEV_SAMP(field1) FROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "sum" : {
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> sum()",
-        "postgres" : "SELECT SUM(field1) FROM example_table;",
+        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> sum()",
+        "postgres" : "SELECT SUM(field1) FROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "example" : {
-        "influx": "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement\")",
-        "postgres": "",
+        "influx": "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")",
+        "postgres": "SELECT * FROM example_table1",
         "config":{
             "amountOfData":123
         }
