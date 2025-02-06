@@ -43,6 +43,13 @@ def manage_postgresql_with_docker():
         # Tabellen erstellen
         print("creating table...")
         create_table_query = """
+        CREATE TABLE IF NOT EXISTS example_table0 (
+            tag1 varchar(50),
+            field1 float,
+            field2 float,
+            field3 float,
+            timestamp int
+        );
         CREATE TABLE IF NOT EXISTS example_table1 (
             tag1 varchar(50),
             field1 float,
@@ -57,34 +64,33 @@ def manage_postgresql_with_docker():
             field3 float,
             timestamp int
         );
-        CREATE TABLE IF NOT EXISTS example_table3 (
-            tag1 varchar(50),
-            field1 float,
-            field2 float,
-            field3 float,
-            timestamp int
-        );
         CREATE INDEX idx_field1 ON example_table1(field1);
         """
-        # create index
+       
         cur.execute(create_table_query)
         conn.commit()
         print("table created successfully")
 
         # Daten einfügen
         print("inserting example data...")
-        insert_data_query = """
+        insert_data_query0 = """
         INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
         VALUES (%s,%s,%s,%s,%s);
         """
-        f = open("postgresqldata.txt" , "r")
-
-
+        insert_data_query1 = """
+        INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
+        VALUES (%s,%s,%s,%s,%s);
+        """
+        insert_data_query2  = """
+        INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
+        VALUES (%s,%s,%s,%s,%s);
+        """
+        f = open("postgresqldata0.txt" , "r")
         # take lines from the file, separate them at every "," , delete /n and convert to tuple
-        data = [tuple(line.strip('\n').split(",")) for line in f.readlines()] # most cursed line of code i have ever written
+        data0 = [tuple(line.strip('\n').split(",")) for line in f.readlines()] # most cursed line of code i have ever written
         #data = [line.strip('\n') for line in f.readlines()]
-        data_out = []
-        for t in data:
+        data0_out = []
+        for t in data0:
             t_out = []
             i = 0
             for tE in t:
@@ -93,11 +99,55 @@ def manage_postgresql_with_docker():
                 else:
                     t_out.append(tE)
                 i += 1
-            data_out.append(tuple(t_out))  
+            data0_out.append(tuple(t_out))  
 
         f.close()
-        print(data_out)
-        cur.executemany(insert_data_query, data_out)
+        print(data0_out)
+        cur.executemany(insert_data_query0, data0_out)
+
+        f = open("postgresqldata1.txt" , "r")
+        # take lines from the file, separate them at every "," , delete /n and convert to tuple
+        data1 = [tuple(line.strip('\n').split(",")) for line in f.readlines()] # most cursed line of code i have ever written
+        #data = [line.strip('\n') for line in f.readlines()]
+        data1_out = []
+        for t in data1:
+            t_out = []
+            i = 0
+            for tE in t:
+                if tE == 'NULL':
+                    t_out.append(None)
+                else:
+                    t_out.append(tE)
+                i += 1
+            data1_out.append(tuple(t_out))  
+
+        f.close()
+
+        print(data1_out)
+
+        cur.executemany(insert_data_query1, data1_out)
+
+        f = open("postgresqldata2.txt" , "r")
+
+        # take lines from the file, separate them at every "," , delete /n and convert to tuple
+        data2 = [tuple(line.strip('\n').split(",")) for line in f.readlines()] # most cursed line of code i have ever written
+        #data = [line.strip('\n') for line in f.readlines()]
+        data2_out = []
+        for t in data2:
+            t_out = []
+            i = 0
+            for tE in t:
+                if tE == 'NULL':
+                    t_out.append(None)
+                else:
+                    t_out.append(tE)
+                i += 1
+            data2_out.append(tuple(t_out))  
+
+        f.close()
+        print(data2_out)
+        cur.executemany(insert_data_query2, data2_out)
+
         conn.commit()
         print(f"{cur.rowcount} Zeilen eingefügt.")
 
@@ -150,21 +200,3 @@ def manage_postgresql_with_docker():
 
 if __name__ == "__main__":
     manage_postgresql_with_docker()
-
-
-def insert_data_query():
-
-        #"""
-        #CREATE TABLE IF NOT EXISTS example_table (
-        #    tag1 varchar(50),
-        #    field1 float,
-        #    field2 float,
-        #    field3 float,
-        #    timestamp int
-        #);
-        #CREATE INDEX idx_field1 ON example_table(field1);
-        #"""
-
-    insert_data_query = ""
-
-    return insert_data_query
