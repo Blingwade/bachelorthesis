@@ -15,7 +15,7 @@ for j in range(3):
 
     # [[True][False][False]]
     for n in range(datapoints):
-        table = numpy.random.choice([1,2,3])
+        table = numpy.random.choice([0,1,2])
         noise1 = numpy.random.normal(0, 1)
         noise2 = numpy.random.normal(0, 1)
         noise3 = numpy.random.normal(0, 1)
@@ -37,7 +37,7 @@ for j in range(3):
         influxsignal3 = "field3=" + signal3 if signal3 != "" else ""
 
         influxdata[j] = influxdata[j] if signal1=="" and signal2 =="" and signal3== "" else influxdata[j] + "example_measurement"+ str(table) + ",tag1=example_tag "+ influxsignal1 + signal1comma + influxsignal2  + signal2comma + influxsignal3 + " " + str(1641024000 + 10*n) + "\n"
-        postgresqldata[j] = postgresqldata[j] if signal1=="" and signal2 =="" and signal3== "" else postgresqldata[j] + "example_tag," + (signal1 + "," if signal1!="" else "NULL,") + (signal2 + "," if signal2!="" else "NULL,") + (signal3 + "," if signal3!="" else "NULL,") + str(1641024000 + 10*n) + "\n"
+        postgresqldata[j] = postgresqldata[j] if signal1=="" and signal2 =="" and signal3== "" else postgresqldata[j] + "example_measurement"+ str(table) +  ",example_tag," + (signal1 + "," if signal1!="" else "NULL,") + (signal2 + "," if signal2!="" else "NULL,") + (signal3 + "," if signal3!="" else "NULL,") + str(1641024000 + 10*n) + "\n"
 print(influxdata)
 
 f = open("influxdata0.txt", "w")

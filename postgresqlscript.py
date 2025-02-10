@@ -44,6 +44,7 @@ def manage_postgresql_with_docker():
         print("creating table...")
         create_table_query = """
         CREATE TABLE IF NOT EXISTS example_table0 (
+            measurement varchar(50),
             tag1 varchar(50),
             field1 float,
             field2 float,
@@ -51,6 +52,7 @@ def manage_postgresql_with_docker():
             timestamp int
         );
         CREATE TABLE IF NOT EXISTS example_table1 (
+            measurement varchar(50),
             tag1 varchar(50),
             field1 float,
             field2 float,
@@ -58,6 +60,7 @@ def manage_postgresql_with_docker():
             timestamp int
         );
         CREATE TABLE IF NOT EXISTS example_table2 (
+            measurement varchar(50),
             tag1 varchar(50),
             field1 float,
             field2 float,
@@ -74,16 +77,16 @@ def manage_postgresql_with_docker():
         # Daten einfügen
         print("inserting example data...")
         insert_data_query0 = """
-        INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
-        VALUES (%s,%s,%s,%s,%s);
+        INSERT INTO example_table0 (measurement, tag1, field1, field2, field3, timestamp)
+        VALUES (%s,%s,%s,%s,%s,%s);
         """
         insert_data_query1 = """
-        INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
-        VALUES (%s,%s,%s,%s,%s);
+        INSERT INTO example_table1 (measurement, tag1, field1, field2, field3, timestamp)
+        VALUES (%s,%s,%s,%s,%s,%s);
         """
         insert_data_query2  = """
-        INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
-        VALUES (%s,%s,%s,%s,%s);
+        INSERT INTO example_table2 (measurement, tag1, field1, field2, field3, timestamp)
+        VALUES (%s,%s,%s,%s,%s,%s);
         """
         f = open("postgresqldata0.txt" , "r")
         # take lines from the file, separate them at every "," , delete /n and convert to tuple

@@ -1,8 +1,64 @@
 {
 
-    "count" : {
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> count()",
-        "postgres" : "SELECT COUNT(field1) FROM example_table1;",
+    "count_0_0_1"  : {
+        "influx" : "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\")  |> filter(fn: (r) => r._field == \"field1\")  |> count()",
+        "postgres" : "SELECT COUNT(field1) FROM example_table0 WHERE measurement = 'example_measurement0';",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_0_2"  : {
+        "influx" : "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\") |> count()",
+    "postgres" : "SELECT COUNT(field1),COUNT(field2) FROM example_table0 WHERE measurement='example_measurement0';",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_0_3"  : {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> count()",
+        "postgres" : "SELECT COUNT(field1), COUNT(field2), COUNT(field3) FROM example_table0 WHERE measurement='example_measurement0';",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_1_1" : {
+        "influx" : "union(tables:[from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> count(), from(bucket: \"example_bucket1\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> count()])",
+        "postgres" : "SELECT COUNT(field1) FROM example_table0 WHERE measurement = 'example_measurement0' UNION ALL SELECT COUNT(field1) FROM example_table1 WHERE measurement = 'example_measurement0'; ",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_1_2" : {
+        "influx" : "union(tables:[from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\")\n  |> count(), from(bucket: \"example_bucket1\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\")\n  |> count()])",
+        "postgres" : "SELECT COUNT(field1),COUNT(field2) FROM example_table0 WHERE measurement = 'example_measurement0' UNION ALL SELECT COUNT(field1),COUNT(field2) FROM example_table1 WHERE measurement = 'example_measurement0'; ",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_1_3" : {
+        "influx" : "union(tables:[from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count(), from(bucket: \"example_bucket1\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count()])",
+        "postgres" : "SELECT COUNT(field1),COUNT(field2),COUNT(field3) FROM example_table0 WHERE measurement = 'example_measurement0' UNION ALL SELECT COUNT(field1),COUNT(field2),COUNT(field3) FROM example_table0 WHERE measurement = 'example_measurement1'; ",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_2_1" : {
+        "influx" : "union(tables:[from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count(), from(bucket: \"example_bucket1\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count()])",
+        "postgres" : "SELECT COUNT(field1) FROM example_table0 WHERE measurement = 'example_measurement0' UNION ALL SELECT COUNT(field1) FROM example_table1 WHERE measurement = 'example_measurement1' UNION ALL SELECT COUNT(field1), FROM example_table1 WHERE measurement = 'example_measurement2'; ",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_2_2" : {
+        "influx" : "union(tables:[from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count(), from(bucket: \"example_bucket1\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count()])",
+        "postgres" : "SELECT COUNT(field1),COUNT(field2),COUNT(field3) FROM example_table0 WHERE measurement = 'example_measurement0' UNION ALL SELECT COUNT(field1),COUNT(field2),COUNT(field3) FROM example_table1 WHERE measurement = 'example_measurement0'; ",
+        "config" : {
+            "amountOfData" : 1234556
+        }
+    },
+    "count_0_2_3" : {
+        "influx" : "union(tables:[from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count(), from(bucket: \"example_bucket1\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement0\")\n  |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\")\n  |> count()])",
+        "postgres" : "SELECT COUNT(field1),COUNT(field2),COUNT(field3) FROM example_table0 WHERE measurement = 'example_measurement0' UNION ALL SELECT COUNT(field1),COUNT(field2),COUNT(field3) FROM example_table1 WHERE measurement = 'example_measurement0'; ",
         "config" : {
             "amountOfData" : 1234556
         }
@@ -23,7 +79,7 @@
     },
     "median":{
         "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> median()",
-        "postgres" : "SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY field1) AS medianFROM example_table1;",
+        "postgres" : "SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY field1) AS median FROM example_table1;",
         "config" : {
             "amountOfData" : 1234556
         }
@@ -49,16 +105,16 @@
             "amountOfData" : 1234556
         }
     },
-    "sum" : {
-        "influx" : "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> sum()",
-        "postgres" : "SELECT SUM(field1) FROM example_table1;",
+    "sum_bucket0_field1" : {
+        "influx" : "from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n |> filter(fn: (r) => r._field == \"field1\")\n  |> sum()",
+        "postgres" : "SELECT SUM(field1) FROM example_table0;",
         "config" : {
             "amountOfData" : 1234556
         }
     },
     "example" : {
         "influx": "from(bucket: \"example_bucket\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")",
-        "postgres": "SELECT * FROM example_table1",
+        "postgres": "SELECT * FROM example_table1 WHERE field1 NOT NULL",
         "config":{
             "amountOfData":123
         }

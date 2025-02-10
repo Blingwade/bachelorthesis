@@ -21,7 +21,7 @@ def manage_influxdb():
                 "DOCKER_INFLUXDB_INIT_USERNAME": "admin",
                 "DOCKER_INFLUXDB_INIT_PASSWORD": "password",
                 "DOCKER_INFLUXDB_INIT_ORG": "example_org",
-                "DOCKER_INFLUXDB_INIT_BUCKET": "example_bucket",
+                "DOCKER_INFLUXDB_INIT_BUCKET": "example_bucket0",
             },
             detach=True,
         )
@@ -60,11 +60,48 @@ def manage_influxdb():
 
         print(f"API-Token: {token}")
 
+
+        print("Rufe Org-ID ab...")
+        org_url = "http://localhost:8086/api/v2/orgs"
+        headers = {
+            "Authorization": f"Token {token}",
+            "Accept": "application/json"
+        }
+
+        org_response = requests.get(org_url, headers=headers)
+        if org_response.status_code == 200:
+            org_data = org_response.json()
+            org_id = org_data["orgs"][0]["id"]  # Die erste Organisation nehmen
+            print(f"✅ Org-ID: {org_id}")
+        else:
+            print(f"❌ Fehler beim Abrufen der Org-ID: {org_response.status_code}, {org_response.text}")
+            return
+
+        # **Zusätzliche Buckets erstellen**
+        print("Erstelle zusätzliche Buckets...")
+        influxdb_url = "http://localhost:8086/api/v2/buckets"
+
+        buckets = ["example_bucket1", "example_bucket2"]
+
+        for bucket in buckets:
+            data = json.dumps({
+                "orgID": org_id,  # **Hier verwenden wir die Org-ID**
+                "name": bucket,
+                "retentionRules": []
+            })
+            response = requests.post(influxdb_url, headers=headers, data=data)
+
+            if response.status_code == 201:
+                print(f"✅ Bucket {bucket} erfolgreich erstellt.")
+            else:
+                print(f"❌ Fehler beim Erstellen von {bucket}: {response.status_code}, {response.text}")
+
+
         # Daten in die Datenbank schreiben
         print("Schreibe Daten in die Datenbank...")
         influxdb_url = "http://localhost:8086/api/v2/write"
         params = {
-            "bucket": "example_bucket",
+            "bucket": "example_bucket0",
             "org": "example_org",
             "precision": "s",
         }
@@ -73,18 +110,51 @@ def manage_influxdb():
             "Content-Type": "text/plain",
         }
 
-        f = open("data.txt","r")
+        f = open("influxdata0.txt","r")
         data = f.read().strip()
         f.close()
 
         response = requests.post(influxdb_url, params=params, headers=headers, data=data)
 
         if response.status_code == 204:
-            print("Daten erfolgreich geschrieben.")
+            print("Daten in example_bucket0 erfolgreich geschrieben.")
         else:
             print(f"Fehler beim Schreiben der Daten: {response.status_code}, {response.text}")
 
         
+        params = {
+            "bucket": "example_bucket1",
+            "org": "example_org",
+            "precision": "s",
+        }
+        f = open("influxdata1.txt","r")
+        data = f.read().strip()
+        f.close()
+
+        response = requests.post(influxdb_url, params=params, headers=headers, data=data)
+
+        if response.status_code == 204:
+            print("Daten in example_bucket0 erfolgreich geschrieben.")
+        else:
+            print(f"Fehler beim Schreiben der Daten: {response.status_code}, {response.text}")
+
+        params = {
+            "bucket": "example_bucket2",
+            "org": "example_org",
+            "precision": "s",
+        }
+        f = open("influxdata2.txt","r")
+        data = f.read().strip()
+        f.close()
+
+        response = requests.post(influxdb_url, params=params, headers=headers, data=data)
+
+        if response.status_code == 204:
+            print("Daten in example_bucket2 erfolgreich geschrieben.")
+        else:
+            print(f"Fehler beim Schreiben der Daten: {response.status_code}, {response.text}")
+
+
         # Query ausführen
         print("Führe Query aus, um alle homes abzurufen...")
         query_url = "http://localhost:8086/api/v2/query"
