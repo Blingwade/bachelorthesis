@@ -5,7 +5,7 @@ datapoints = 500
 influxdata = ["","",""]
 postgresqldata = ["","",""]
 pure = numpy.linspace(0, 100, datapoints)
-
+# pure2 =[]
 print(numpy.random.choice([True,False]))
 saturation = 0.5
 for j in range(3):
@@ -17,6 +17,7 @@ for j in range(3):
     for n in range(datapoints):
         table = numpy.random.choice([0,1,2])
         noise1 = numpy.random.normal(0, 1)
+        # pure2.append(pure[n]+noise1)
         noise2 = numpy.random.normal(0, 1)
         noise3 = numpy.random.normal(0, 1)
         signal1 = str(pure[n] + noise1) if saturationarray[n][0]==numpy.True_ else ""
@@ -61,6 +62,12 @@ f.close()
 f = open("postgresqldata2.txt", "w")
 f.write(postgresqldata[2])
 f.close()
+
+#import matplotlib.pyplot as plt
+
+#plt.plot(pure2)
+#plt.ylabel('some numbers')
+#plt.savefig("example.png")
 
 #INSERT INTO example_table1 (tag1, field1, field2, field3, timestamp)
         #VALUES (%s, %s, %s, %s, %s);

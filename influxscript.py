@@ -28,7 +28,7 @@ def manage_influxdb():
         print(f"InfluxDB-Container gestartet. Container-ID: {container.id}")
 
         # Wartezeit, bis der Container bereit ist
-        time.sleep(10)
+        time.sleep(5)
 
         # API-Token erstellen
         print("Erstelle API-Token...")
@@ -72,9 +72,9 @@ def manage_influxdb():
         if org_response.status_code == 200:
             org_data = org_response.json()
             org_id = org_data["orgs"][0]["id"]  # Die erste Organisation nehmen
-            print(f"✅ Org-ID: {org_id}")
+            print(f" Org-ID: {org_id}")
         else:
-            print(f"❌ Fehler beim Abrufen der Org-ID: {org_response.status_code}, {org_response.text}")
+            print(f" Fehler beim Abrufen der Org-ID: {org_response.status_code}, {org_response.text}")
             return
 
         # **Zusätzliche Buckets erstellen**
@@ -92,9 +92,9 @@ def manage_influxdb():
             response = requests.post(influxdb_url, headers=headers, data=data)
 
             if response.status_code == 201:
-                print(f"✅ Bucket {bucket} erfolgreich erstellt.")
+                print(f"Bucket {bucket} erfolgreich erstellt.")
             else:
-                print(f"❌ Fehler beim Erstellen von {bucket}: {response.status_code}, {response.text}")
+                print(f"Fehler beim Erstellen von {bucket}: {response.status_code}, {response.text}")
 
 
         # Daten in die Datenbank schreiben
@@ -169,28 +169,34 @@ def manage_influxdb():
 
         except e:
             print("no such query found")
-        queryfile = open("queries.json", "r")
+        with open("queries.json", "r") as queryfile:
+            queries = json.load(queryfile)
+            print(queries)
+            logs = open("influxqueryresponses.txt", "a")
+            for item in queries:
 
-        query = json.loads(queryfile.read())[yourinput]["influx"]
-        #sumquery = json.loads(queryfile.read())["sum"]["influx"]
-        print(query)
+                print(item)
+                query = queries[item]["influx"]
+                #sumquery = json.loads(queryfile.read())["sum"]["influx"]
+                print(query)
 
-        headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
+                headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
 
 
-        # Startzeit der Query Ausführung 
-        starttime = time.time_ns()
-        query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
+                # Startzeit der Query Ausführung 
+                starttime = time.time_ns()
+                query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
 
-        endtime = time.time_ns()
+                endtime = time.time_ns()
 
-        
+                
 
-        if query_response.status_code == 200:
-            print("Query erfolgreich ausgeführt. Ergebnisse:")
-            print(query_response.elapsed, query_response.text)
-        else:
-            print(f"Fehler bei der Query: {query_response.status_code}, {query_response.text}")
+                if query_response.status_code == 200:
+                    print("Query erfolgreich ausgeführt. Ergebnisse:")
+                    print(query_response.elapsed, query_response.text)
+                    logs.write(str(query_response.elapsed) +" " +  query_response.text)
+                else:
+                    print(f"Fehler bei der Query: {query_response.status_code}, {query_response.text}")
 
     except Exception as e:
         print(f"Fehler: {e}")

@@ -1,0 +1,351 @@
+0:00:00.021287 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.416366581Z,field1,example_measurement0,example_tag,99.12648830501034
+
+0:00:00.021603 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.442973681Z,field1,example_measurement0,example_tag,99.12648830501034
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.442973681Z,field2,example_measurement0,example_tag,97.6891456308113
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.442973681Z,field3,example_measurement0,example_tag,100.83944462025171
+
+0:00:00.019388 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.475118652Z,field1,example_measurement0,example_tag,99.12648830501034
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.475118652Z,field1,example_measurement1,example_tag,99.11477224942685
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.475118652Z,field1,example_measurement2,example_tag,97.2413908184058
+
+0:00:00.020712 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field1,example_measurement0,example_tag,99.12648830501034
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field1,example_measurement1,example_tag,99.11477224942685
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field1,example_measurement2,example_tag,97.2413908184058
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field2,example_measurement0,example_tag,97.6891456308113
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field2,example_measurement1,example_tag,98.06944302184594
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field2,example_measurement2,example_tag,97.35750603659929
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field3,example_measurement0,example_tag,100.83944462025171
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field3,example_measurement1,example_tag,96.04585020879172
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:11:59.501517763Z,field3,example_measurement2,example_tag,96.147836320744
+
+0:00:00.021402 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement0,example_tag,99.12648830501034
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement0,example_tag,99.44727630820537
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement0,example_tag,100.80093934561597
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement1,example_tag,99.11477224942685
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement1,example_tag,98.95510514642343
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement1,example_tag,97.49792469154191
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement2,example_tag,97.2413908184058
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement2,example_tag,99.88805942152308
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.529749065Z,field1,example_measurement2,example_tag,97.84824978356701
+
+0:00:00.023719 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement0,example_tag,99.12648830501034
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement0,example_tag,99.44727630820537
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement0,example_tag,100.80093934561597
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement1,example_tag,99.11477224942685
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement1,example_tag,98.95510514642343
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement1,example_tag,97.49792469154191
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement2,example_tag,97.2413908184058
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement2,example_tag,99.88805942152308
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field1,example_measurement2,example_tag,97.84824978356701
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement0,example_tag,97.6891456308113
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement0,example_tag,100.95969449069838
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement0,example_tag,100.12682121443497
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement1,example_tag,98.06944302184594
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement1,example_tag,97.00874341454976
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement1,example_tag,99.77000031330002
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement2,example_tag,97.35750603659929
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement2,example_tag,97.33429611838966
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field2,example_measurement2,example_tag,97.74162969163893
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement0,example_tag,100.83944462025171
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement0,example_tag,100.54331726643368
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement0,example_tag,97.71083897122584
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement1,example_tag,96.04585020879172
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement1,example_tag,101.9463487312462
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement1,example_tag,96.5341782951261
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement2,example_tag,96.147836320744
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement2,example_tag,96.70029389012143
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:11:59.561092271Z,field3,example_measurement2,example_tag,94.86233197908838
+
+0:00:00.015917 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.594154655Z,field1,example_measurement1,example_tag,28.82443529025454
+
+0:00:00.015868 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:11:59.616320425Z,3412.9221516881194,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:11:59.616320425Z,4146.0734545635705,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:11:59.616320425Z,5227.363383176628,field1,example_measurement2,example_tag
+
+0:00:00.027381 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.280696863Z,70,field1,example_measurement0,example_tag
+
+0:00:00.019505 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.309069295Z,70,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.309069295Z,76,field2,example_measurement0,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.309069295Z,79,field3,example_measurement0,example_tag
+
+0:00:00.017371 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.330048957Z,70,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.330048957Z,80,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.330048957Z,98,field1,example_measurement2,example_tag
+
+0:00:00.018113 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,70,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,76,field2,example_measurement0,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,79,field3,example_measurement0,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,80,field1,example_measurement1,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,82,field2,example_measurement1,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,80,field3,example_measurement1,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,98,field1,example_measurement2,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,95,field2,example_measurement2,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.351844538Z,103,field3,example_measurement2,example_tag
+
+0:00:00.043273 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,70,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,82,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,86,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,80,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,85,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,80,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,87,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,98,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.376713403Z,75,field1,example_measurement2,example_tag
+
+0:00:00.038000 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,82,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,70,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,86,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,80,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,85,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,80,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,75,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,87,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,98,field1,example_measurement2,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,73,field2,example_measurement0,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,88,field2,example_measurement0,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,76,field2,example_measurement0,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,90,field2,example_measurement1,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,89,field2,example_measurement1,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,82,field2,example_measurement1,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,64,field2,example_measurement2,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,90,field2,example_measurement2,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,95,field2,example_measurement2,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,75,field3,example_measurement0,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,90,field3,example_measurement0,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,79,field3,example_measurement0,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,95,field3,example_measurement1,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,85,field3,example_measurement1,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,80,field3,example_measurement1,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,65,field3,example_measurement2,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,82,field3,example_measurement2,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.428170177Z,103,field3,example_measurement2,example_tag
+
+0:00:00.019237 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.464125784Z,field1,example_measurement1,example_tag,248411.53079711762
+
+0:00:00.020544 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.486249148Z,field1,example_measurement1,example_tag,248411.53079711762
+
+0:00:00.019933 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.509139295Z,field1,example_measurement1,example_tag,248411.53079711762
+
+0:00:00.022428 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.530837345Z,field1,example_measurement1,example_tag,248411.53079711762
+
+0:00:00.028377 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement0,example_tag,240087.79275772112
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement0,example_tag,243244.00527474537
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement0,example_tag,247283.8169557026
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement1,example_tag,248278.5577622088
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement1,example_tag,248411.53079711762
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement1,example_tag,244041.52393468964
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement2,example_tag,245429.08074613995
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement2,example_tag,245131.61123675937
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.557330168Z,field1,example_measurement2,example_tag,235145.5518092007
+
+0:00:00.019407 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.613839385Z,48.756030738401705,field1,example_measurement0,example_tag
+
+0:00:00.026758 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.636204116Z,48.756030738401705,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.636204116Z,46.279211291435665,field2,example_measurement0,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.636204116Z,48.93057304145218,field3,example_measurement0,example_tag
+
+0:00:00.021291 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.666694009Z,48.756030738401705,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.666694009Z,51.82591818204463,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.666694009Z,53.3404426854758,field1,example_measurement2,example_tag
+
+0:00:00.020926 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,48.756030738401705,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,46.279211291435665,field2,example_measurement0,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,48.93057304145218,field3,example_measurement0,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,51.82591818204463,field1,example_measurement1,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,47.61691210300009,field2,example_measurement1,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,47.110200889122595,field3,example_measurement1,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,53.3404426854758,field1,example_measurement2,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,48.58366952079629,field2,example_measurement2,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.689638003Z,51.08727738053952,field3,example_measurement2,example_tag
+
+0:00:00.029023 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,52.32885785904731,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,51.298109549582975,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,48.756030738401705,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,47.4647341458642,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,50.48578904712094,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,51.82591818204463,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,51.062956594870606,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,53.00983714756215,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.713656541Z,53.3404426854758,field1,example_measurement2,example_tag
+
+0:00:00.022705 ,result,table,_start,_stop,_value,_field,_measurement,tag1
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,48.756030738401705,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.298109549582975,field1,example_measurement0,example_tag
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,52.32885785904731,field1,example_measurement0,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.82591818204463,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,50.48578904712094,field1,example_measurement1,example_tag
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.4647341458642,field1,example_measurement1,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,53.3404426854758,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.062956594870606,field1,example_measurement2,example_tag
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,53.00983714756215,field1,example_measurement2,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,53.835050578594284,field2,example_measurement0,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,46.279211291435665,field2,example_measurement0,example_tag
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.91748713835811,field2,example_measurement0,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.61691210300009,field2,example_measurement1,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,52.825728987848635,field2,example_measurement1,example_tag
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,43.58616603399662,field2,example_measurement1,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.377937171104485,field2,example_measurement2,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.00552317079023,field2,example_measurement2,example_tag
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,48.58366952079629,field2,example_measurement2,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.183206775933456,field3,example_measurement0,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,48.93057304145218,field3,example_measurement0,example_tag
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,52.77414992876109,field3,example_measurement0,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.110200889122595,field3,example_measurement1,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.16515608073319,field3,example_measurement1,example_tag
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.8938022883319,field3,example_measurement1,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,47.33763147185323,field3,example_measurement2,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,46.67974752229158,field3,example_measurement2,example_tag
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.745524415Z,51.08727738053952,field3,example_measurement2,example_tag
+
+0:00:00.016316 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.773702578Z,field1,example_measurement0,example_tag,47.87107779391101
+
+0:00:00.016603 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.79257555Z,field1,example_measurement0,example_tag,47.87107779391101
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.79257555Z,field2,example_measurement0,example_tag,47.032763982602404
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.79257555Z,field3,example_measurement0,example_tag,50.61477493890267
+
+0:00:00.016670 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.812072688Z,field1,example_measurement0,example_tag,47.87107779391101
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.812072688Z,field1,example_measurement1,example_tag,55.49942198804336
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.812072688Z,field1,example_measurement2,example_tag,58.4705661947452
+
+0:00:00.018528 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field1,example_measurement0,example_tag,47.87107779391101
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field1,example_measurement1,example_tag,55.49942198804336
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field1,example_measurement2,example_tag,58.4705661947452
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field2,example_measurement0,example_tag,47.032763982602404
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field2,example_measurement1,example_tag,47.209136850241904
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field2,example_measurement2,example_tag,48.081245322682435
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field3,example_measurement0,example_tag,50.61477493890267
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field3,example_measurement1,example_tag,41.099285351348215
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.83250841Z,field3,example_measurement2,example_tag,53.370307908884335
+
+0:00:00.022903 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement0,example_tag,47.87107779391101
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement0,example_tag,50.85755519065155
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement0,example_tag,53.74012989996473
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement1,example_tag,55.49942198804336
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement1,example_tag,44.11006774355252
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement1,example_tag,52.201468794522604
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement2,example_tag,58.4705661947452
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement2,example_tag,49.625399700865046
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.855188247Z,field1,example_measurement2,example_tag,50.2008392519564
+
+0:00:00.026508 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement0,example_tag,47.87107779391101
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement0,example_tag,50.85755519065155
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement0,example_tag,53.74012989996473
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement1,example_tag,55.49942198804336
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement1,example_tag,44.11006774355252
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement1,example_tag,52.201468794522604
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement2,example_tag,58.4705661947452
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement2,example_tag,49.625399700865046
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field1,example_measurement2,example_tag,50.2008392519564
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement0,example_tag,47.032763982602404
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement0,example_tag,59.144802935711496
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement0,example_tag,49.08701025737722
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement1,example_tag,47.209136850241904
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement1,example_tag,32.945062409278286
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement1,example_tag,53.72214977533418
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement2,example_tag,48.081245322682435
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement2,example_tag,49.65019959710047
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field2,example_measurement2,example_tag,49.201027003445674
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement0,example_tag,50.61477493890267
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement0,example_tag,55.37912078905934
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement0,example_tag,55.039866341705924
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement1,example_tag,41.099285351348215
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement1,example_tag,44.0891749508575
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement1,example_tag,41.503945460973235
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement2,example_tag,53.370307908884335
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement2,example_tag,47.650597737378035
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.88112565Z,field3,example_measurement2,example_tag,44.46806403601492
+
+0:00:00.017299 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.912511139Z,field1,example_measurement0,example_tag,
+
+0:00:00.018047 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.935313452Z,field1,example_measurement0,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.935313452Z,field2,example_measurement0,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.935313452Z,field3,example_measurement0,example_tag,
+
+0:00:00.016468 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.954778021Z,field1,example_measurement0,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.954778021Z,field1,example_measurement1,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.954778021Z,field1,example_measurement2,example_tag,
+
+0:00:00.018875 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field1,example_measurement0,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field1,example_measurement1,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field1,example_measurement2,example_tag,
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field2,example_measurement0,example_tag,
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field2,example_measurement1,example_tag,
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field2,example_measurement2,example_tag,
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field3,example_measurement0,example_tag,
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field3,example_measurement1,example_tag,
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:33.973774316Z,field3,example_measurement2,example_tag,
+
+0:00:00.021524 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement0,example_tag,
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement0,example_tag,
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement0,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement1,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement1,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement1,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement2,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement2,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:33.996996288Z,field1,example_measurement2,example_tag,
+
+0:00:00.027938 ,result,table,_start,_stop,_field,_measurement,tag1,_value
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement0,example_tag,
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement0,example_tag,
+,_result,0,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement0,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement1,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement1,example_tag,
+,_result,1,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement1,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement2,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement2,example_tag,
+,_result,2,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field1,example_measurement2,example_tag,
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement0,example_tag,
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement0,example_tag,
+,_result,3,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement0,example_tag,
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement1,example_tag,
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement1,example_tag,
+,_result,4,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement1,example_tag,
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement2,example_tag,
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement2,example_tag,
+,_result,5,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field2,example_measurement2,example_tag,
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement0,example_tag,
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement0,example_tag,
+,_result,6,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement0,example_tag,
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement1,example_tag,
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement1,example_tag,
+,_result,7,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement1,example_tag,
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement2,example_tag,
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement2,example_tag,
+,_result,8,1970-01-01T00:00:00Z,2025-02-11T11:12:34.021290932Z,field3,example_measurement2,example_tag,
+
