@@ -1,7 +1,7 @@
 import numpy
 
 numpy.random.seed(1)
-datapoints = 500
+datapoints = 2000
 influxdata = ["","",""]
 postgresqldata = ["","",""]
 pure = numpy.linspace(0, 100, datapoints)

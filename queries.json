@@ -192,18 +192,64 @@
         "postgres": "SELECT MAX(field1) - MIN(field1), MAX(field2) - MIN(field2), MAX(field3) - MIN(field3) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT MAX(field1) - MIN(field1), MAX(field2) - MIN(field2), MAX(field3) - MIN(field3) FROM example_table1 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT MAX(field1) - MIN(field1), MAX(field2) - MIN(field2), MAX(field3) - MIN(field3) FROM example_table2 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
         "config": { "amountOfData": 1234556 }
     },
-    "stddev":{
-        "influx" : "from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n  |> filter(fn: (r) => r._measurement == \"example_measurement1\")\n  |> filter(fn: (r) => r._field == \"field1\")\n  |> stddev()",
-        "postgres" : "SELECT STDDEV_POP(field1), STDDEV_SAMP(field1) FROM example_table0;",
-        "config" : {
-            "amountOfData" : 1234556
-        }
+    "stddev_0_0_1": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\") |> filter(fn: (r) => r._field == \"field1\") |> stddev()",
+        "postgres": "SELECT STDDEV(field1) FROM example_table0 WHERE measurement = 'example_measurement0';",
+        "config": { "amountOfData": 1234556 }
     },
-    "sum_bucket0_field1" : {
-        "influx" : "from(bucket: \"example_bucket0\")\n  |> range(start: 0)\n |> filter(fn: (r) => r._field == \"field1\")\n  |> sum()",
-        "postgres" : "SELECT SUM(field1) FROM example_table0;",
-        "config" : {
-            "amountOfData" : 1234556
-        }
+    "stddev_0_0_3": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> stddev()",
+        "postgres": "SELECT STDDEV(field1), STDDEV(field2), STDDEV(field3) FROM example_table0 WHERE measurement='example_measurement0';",
+        "config": { "amountOfData": 1234556 }
+    },
+    "stddev_0_2_1": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> stddev()",
+        "postgres": "SELECT STDDEV(field1) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "stddev_0_2_3": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> stddev()",
+        "postgres": "SELECT STDDEV(field1), STDDEV(field2), STDDEV(field3) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "stddev_2_2_1": {
+        "influx": "union(tables:[from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> stddev(), from(bucket: \"example_bucket1\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> stddev(), from(bucket: \"example_bucket2\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> stddev()])",
+        "postgres": "SELECT STDDEV(field1) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT STDDEV(field1) FROM example_table1 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT STDDEV(field1) FROM example_table2 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "stddev_2_2_3": {
+        "influx": "union(tables:[from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> stddev(), from(bucket: \"example_bucket1\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> stddev(), from(bucket: \"example_bucket2\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> stddev()])",
+        "postgres": "SELECT STDDEV(field1), STDDEV(field2), STDDEV(field3) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT STDDEV(field1), STDDEV(field2), STDDEV(field3) FROM example_table1 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT STDDEV(field1), STDDEV(field2), STDDEV(field3) FROM example_table2 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "sum_0_0_1": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\") |> filter(fn: (r) => r._field == \"field1\") |> sum()",
+        "postgres": "SELECT SUM(field1) FROM example_table0 WHERE measurement = 'example_measurement0';",
+        "config": { "amountOfData": 1234556 }
+    },
+    "sum_0_0_3": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> sum()",
+        "postgres": "SELECT SUM(field1), SUM(field2), SUM(field3) FROM example_table0 WHERE measurement='example_measurement0';",
+        "config": { "amountOfData": 1234556 }
+    },
+    "sum_0_2_1": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> sum()",
+        "postgres": "SELECT SUM(field1) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "sum_0_2_3": {
+        "influx": "from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> sum()",
+        "postgres": "SELECT SUM(field1), SUM(field2), SUM(field3) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "sum_2_2_1": {
+        "influx": "union(tables:[from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> sum(), from(bucket: \"example_bucket1\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> sum(), from(bucket: \"example_bucket2\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\") |> sum()])",
+        "postgres": "SELECT SUM(field1) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT SUM(field1) FROM example_table1 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT SUM(field1) FROM example_table2 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
+    },
+    "sum_2_2_3": {
+        "influx": "union(tables:[from(bucket: \"example_bucket0\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> sum(), from(bucket: \"example_bucket1\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> sum(), from(bucket: \"example_bucket2\") |> range(start: 0) |> filter(fn: (r) => r._measurement == \"example_measurement0\" or r._measurement == \"example_measurement1\" or r._measurement == \"example_measurement2\") |> filter(fn: (r) => r._field == \"field1\" or r._field == \"field2\" or r._field == \"field3\") |> sum()])",
+        "postgres": "SELECT SUM(field1), SUM(field2), SUM(field3) FROM example_table0 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT SUM(field1), SUM(field2), SUM(field3) FROM example_table1 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2') UNION ALL SELECT SUM(field1), SUM(field2), SUM(field3) FROM example_table2 WHERE measurement IN ('example_measurement0', 'example_measurement1', 'example_measurement2');",
+        "config": { "amountOfData": 1234556 }
     }
 }
