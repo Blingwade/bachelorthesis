@@ -5,46 +5,6 @@ import requests
 import subprocess
 import json
 
-def flush_memory(token):
-    """
-    Dummy-Daten schreiben, um den WAL (Write-Ahead Log) zu leeren.
-    """
-    print("Flushe Speicher...")
-    influxdb_url = "http://localhost:8086/api/v2/write"
-    params = {
-        "bucket": "example_bucket0",
-        "org": "example_org",
-        "precision": "s",
-    }
-    headers = {
-        "Authorization": f"Token {token}",
-        "Content-Type": "text/plain",
-    }
-    
-    dummy_data = "flush_measurement value=0"
-    requests.post(influxdb_url, params=params, headers=headers, data=dummy_data)
-    time.sleep(1)  # Kurze Pause, damit Daten persistiert werden
-
-def preload_dummy_query(token):
-    """
-    Führt eine Dummy-Abfrage aus, um zwischengespeicherte Query-Ergebnisse zu entfernen.
-    """
-    print("Führe Dummy-Query aus, um Cache zu beeinflussen...")
-    query_url = "http://localhost:8086/api/v2/query"
-    query = '''
-    from(bucket: "example_bucket0")
-      |> range(start: -1m)
-      |> limit(n: 1)
-    '''
-    headers = {
-        "Authorization": f"Token {token}",
-        "Content-Type": "application/vnd.flux",
-        "Accept": "application/csv"
-    }
-    requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
-    time.sleep(1)  # Sicherstellen, dass der Cache geleert wird
-
-
 def manage_influxdb():
     # Docker-Client initialisieren
     client = docker.from_env()
@@ -222,22 +182,43 @@ def manage_influxdb():
 
                 headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
 
-                flush_memory(token)
+                #flush_memory(token)
                 # **Preload-Dummy-Query, um Cache-Effekte zu minimieren**
-                preload_dummy_query(token)
+                #preload_dummy_query(token)
 
+                # Hier container stoppen und neu starten, damit cache geleert wird, selbes noch bei postgres machen
+                # storage-series-id-set-cacche-size
                 # Startzeit der Query Ausführung 
                 starttime = time.time_ns()
                 query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
-
                 endtime = time.time_ns()
 
-                
+                numeric_value = None
+
+               # Antwort in Zeilen aufteilen
+                lines = query_response.text.strip().split("\n")
+
+                # Spaltennamen aus der ersten Zeile extrahieren
+                column_names = [col.strip() for col in lines[0].split(",")]  # Leerzeichen entfernen
+                # Prüfen, an welcher Position die Spalte "_value" ist
+                try:
+                    value_index = column_names.index("_value")  # Die Spaltennummer von "_value" holen
+                except ValueError:
+                    print("Fehler: Keine '_value'-Spalte in der Antwort gefunden")
+                    value_index = None
+
+                # Falls die Spalte gefunden wurde, extrahieren wir die Zahl aus der letzten Datenzeile
+                if value_index is not None and len(lines) > 1:
+                    last_data_line = lines[-1].split(",")  # Letzte Zeile aufteilen
+                    if len(last_data_line) > value_index:  # Sicherstellen, dass die Spalte existiert
+                        numeric_value = last_data_line[value_index].strip()  # Den Wert holen
+                    else:
+                        print("Fehler: '_value'-Spalte nicht in der letzten Zeile gefunden")
+
+                print(query_response.text)
 
                 if query_response.status_code == 200:
-                    print("Query erfolgreich ausgeführt. Ergebnisse:")
-                    print(query_response.elapsed, query_response.text)
-                    logs.write(str(query_response.elapsed) +" " +  str(item) + "\n" +  query_response.text)
+                    logs.write(str(item)+"," + str(endtime-starttime)  + "," + str(query_response.text) + "\n")
                 else:
                     print(f"Fehler bei der Query: {query_response.status_code}, {query_response.text}")
 
@@ -252,6 +233,7 @@ def manage_influxdb():
         # Container stoppen und löschen
         print("Stoppe den Container...")
         try:
+            print(container.stats(decode=None,stream = False)['memory_stats'])
             container.stop()
             container.remove()
             print("Container erfolgreich gestoppt und gelöscht.")

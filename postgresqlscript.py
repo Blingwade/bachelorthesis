@@ -6,6 +6,8 @@ import json
 
 def manage_postgresql_with_docker():
     # Docker-Client initialisieren
+    starttime = time.time()
+
     client = docker.from_env()
     starttime = 0
     endtime = 0
@@ -146,7 +148,7 @@ def manage_postgresql_with_docker():
                     t_out.append(tE)
                 i += 1
             data2_out.append(tuple(t_out))  
-
+        # docker container neu starten
         f.close()
         print(data2_out)
         cur.executemany(insert_data_query2, data2_out)
@@ -164,20 +166,43 @@ def manage_postgresql_with_docker():
             yourinput = input("which function do you want to test\n")
 
         except e:
-            print("no such query found")
-        queryfile = open("queries.json", "r")
+            print("no such query found")        
+        with open("queries.json", "r") as queryfile:
+            queries = json.load(queryfile)
+            print(queries)
+            logs = open("postgresqlqueryresponses.txt", "a")
+            for item in queries:
+                container.stop()
+                time.sleep(1)
+                container.start()
+                time.sleep(1)
 
-        query = json.loads(queryfile.read())[yourinput]["postgres"]
+                conn = psycopg2.connect(
+                    dbname="example_db",
+                    user="admin",
+                    password="password",
+                    host="localhost",
+                    port=5432
+                )
+                cur = conn.cursor()
+
+                print(item)
+                query = queries[item]["postgres"]
+                print(query)
+
+                # Startzeit der Query Ausführung 
+                starttime = time.time_ns()
+
+                cur.execute(query)
+
+                endtime = time.time_ns()
+                
+                results = cur.fetchall()
+                for row in results:
+                    logs.write(item + ","+ str(endtime - starttime)+ "," + str(row).strip("()") + "\n")
         queryfile.close()
 
-        starttime = time.time_ns()
-        cur.execute(query)
-        endtime = time.time_ns()
-        results = cur.fetchall()
-
-        for row in results:
-            print(row)
-
+        
     except Exception as e:
         print(f"Fehler: {e}")
 
@@ -195,6 +220,8 @@ def manage_postgresql_with_docker():
         print("query execution time: " + str(endtime - starttime))
         print("Stoppe den Container...")
         try:
+            endtime = time.time()
+            print("total time" + str(endtime-starttime))
             container.stop()
             container.remove()
             print("Container stopped and deleted.")

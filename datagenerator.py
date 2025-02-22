@@ -7,7 +7,7 @@ postgresqldata = ["","",""]
 pure = numpy.linspace(0, 100, datapoints)
 # pure2 =[]
 print(numpy.random.choice([True,False]))
-saturation = 0.5
+saturation = 1
 for j in range(3):
     saturationarray = []
     for i in range(datapoints):
