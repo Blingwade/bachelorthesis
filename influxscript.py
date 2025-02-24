@@ -218,7 +218,7 @@ def manage_influxdb():
                 print(query_response.text)
 
                 if query_response.status_code == 200:
-                    logs.write(str(item)+"," + str(endtime-starttime)  + "," + str(query_response.text) + "\n")
+                    logs.write(str(item)+"," + str(endtime-starttime)  + "," + str(numeric_value) + "\n")
                 else:
                     print(f"Fehler bei der Query: {query_response.status_code}, {query_response.text}")
 

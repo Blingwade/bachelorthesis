@@ -69,7 +69,16 @@ def manage_postgresql_with_docker():
             field3 float,
             timestamp int
         );
-        CREATE INDEX idx_field1 ON example_table1(field1);
+        CREATE INDEX idx_field11 ON example_table0(field1);
+        CREATE INDEX idx_field21 ON example_table0(field2);
+        CREATE INDEX idx_field31 ON example_table0(field3);
+        CREATE INDEX idx_field12 ON example_table1(field1);
+        CREATE INDEX idx_field22 ON example_table1(field2);
+        CREATE INDEX idx_field32 ON example_table1(field3);
+        CREATE INDEX idx_field13 ON example_table2(field1);
+        CREATE INDEX idx_field23 ON example_table2(field2);
+        CREATE INDEX idx_field33 ON example_table2(field3);
+
         """
        
         cur.execute(create_table_query)
@@ -172,10 +181,10 @@ def manage_postgresql_with_docker():
             print(queries)
             logs = open("postgresqlqueryresponses.txt", "a")
             for item in queries:
-                container.stop()
-                time.sleep(1)
-                container.start()
-                time.sleep(1)
+                #container.stop()
+                #time.sleep(1)
+                #container.start()
+                #time.sleep(1)
 
                 conn = psycopg2.connect(
                     dbname="example_db",
