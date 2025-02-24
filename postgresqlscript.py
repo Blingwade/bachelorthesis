@@ -3,7 +3,7 @@ import docker
 import psycopg2
 import time
 import json
-
+import numpy
 def manage_postgresql_with_docker():
     # Docker-Client initialisieren
     starttime = time.time()
@@ -181,34 +181,37 @@ def manage_postgresql_with_docker():
             print(queries)
             logs = open("postgresqlqueryresponses.txt", "a")
             for item in queries:
-                #container.stop()
-                #time.sleep(1)
-                #container.start()
-                #time.sleep(1)
-
-                conn = psycopg2.connect(
-                    dbname="example_db",
-                    user="admin",
-                    password="password",
-                    host="localhost",
-                    port=5432
-                )
-                cur = conn.cursor()
-
+                times = []
                 print(item)
                 query = queries[item]["postgres"]
                 print(query)
+                for i in range(100):    
+                    container.stop()
+                    time.sleep(1)
+                    container.start()
+                    time.sleep(1)
 
-                # Startzeit der Query Ausführung 
-                starttime = time.time_ns()
+                    conn = psycopg2.connect(
+                        dbname="example_db",
+                        user="admin",
+                        password="password",
+                        host="localhost",
+                        port=5432
+                    )
+                    cur = conn.cursor()
+                    
+                    
 
-                cur.execute(query)
+                    # Startzeit der Query Ausführung 
+                    starttime = time.time_ns()
 
-                endtime = time.time_ns()
-                
+                    cur.execute(query)
+
+                    endtime = time.time_ns()
+                    times.append(endtime-starttime)
                 results = cur.fetchall()
                 for row in results:
-                    logs.write(item + ","+ str(endtime - starttime)+ "," + str(row).strip("()") + "\n")
+                    logs.write(item + ","+ str(numpy.average(times))+ "," + str(row).strip("()") + "\n")
         queryfile.close()
 
         

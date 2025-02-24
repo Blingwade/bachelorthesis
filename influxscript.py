@@ -4,6 +4,7 @@ import time
 import requests
 import subprocess
 import json
+import numpy
 
 def manage_influxdb():
     # Docker-Client initialisieren
@@ -22,6 +23,7 @@ def manage_influxdb():
                 "DOCKER_INFLUXDB_INIT_PASSWORD": "password",
                 "DOCKER_INFLUXDB_INIT_ORG": "example_org",
                 "DOCKER_INFLUXDB_INIT_BUCKET": "example_bucket0",
+                "INFLUXD_STORAGE_SERIES_ID_SET_CACHE_SIZE": "0"
             },
             detach=True,
         )
@@ -182,16 +184,21 @@ def manage_influxdb():
 
                 headers.update({"Content-Type": "application/vnd.flux", "Accept": "application/csv"})
 
-                #flush_memory(token)
-                # **Preload-Dummy-Query, um Cache-Effekte zu minimieren**
-                #preload_dummy_query(token)
 
                 # Hier container stoppen und neu starten, damit cache geleert wird, selbes noch bei postgres machen
-                # storage-series-id-set-cacche-size
-                # Startzeit der Query Ausführung 
-                starttime = time.time_ns()
-                query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
-                endtime = time.time_ns()
+                times = []
+                query_response = ""
+                for i in range(100):
+                    container.stop()
+                    time.sleep(1)
+                    container.start()
+                    time.sleep(1)
+
+                    starttime = time.time_ns()
+                    query_response = requests.post(query_url, params={"org": "example_org"}, headers=headers, data=query)
+                    endtime = time.time_ns()
+
+                    times.append(endtime-starttime)
 
                 numeric_value = None
 
@@ -218,7 +225,7 @@ def manage_influxdb():
                 print(query_response.text)
 
                 if query_response.status_code == 200:
-                    logs.write(str(item)+"," + str(endtime-starttime)  + "," + str(numeric_value) + "\n")
+                    logs.write(str(item)+"," + str(numpy.average(times))  + "," + str(numeric_value) + "\n")
                 else:
                     print(f"Fehler bei der Query: {query_response.status_code}, {query_response.text}")
 
