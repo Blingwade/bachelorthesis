@@ -1,13 +1,13 @@
 import numpy
 
 numpy.random.seed(1)
-datapoints = 101
-influxdata = ["","",""]
-postgresqldata = ["","",""]
+datapoints = 1000
+influxdata = [list(),list(),list()]
+postgresqldata = [list(),list(),list()]
 pure = numpy.linspace(0, 100, datapoints)
 # pure2 =[]
 print(numpy.random.choice([True,False]))
-saturation = 1
+saturation = 0.5
 for j in range(3):
     saturationarray = []
     for i in range(datapoints):
@@ -37,31 +37,47 @@ for j in range(3):
         influxsignal2 = "field2=" + signal2 if signal2 != "" else ""
         influxsignal3 = "field3=" + signal3 if signal3 != "" else ""
 
-        influxdata[j] = influxdata[j] if signal1=="" and signal2 =="" and signal3== "" else influxdata[j] + "example_measurement"+ str(table) + ",tag1=example_tag "+ influxsignal1 + signal1comma + influxsignal2  + signal2comma + influxsignal3 + " " + str(1641024000 + 10*n) + "\n"
-        postgresqldata[j] = postgresqldata[j] if signal1=="" and signal2 =="" and signal3== "" else postgresqldata[j] + "example_measurement"+ str(table) +  ",example_tag," + (signal1 + "," if signal1!="" else "NULL,") + (signal2 + "," if signal2!="" else "NULL,") + (signal3 + "," if signal3!="" else "NULL,") + str(1641024000 + 10*n) + "\n"
-print(influxdata)
+        if not (signal1=="" and signal2 =="" and signal3== ""):
+            influxdata[j].append( "example_measurement"+ str(table) + ",tag1=example_tag "+ influxsignal1 + signal1comma + influxsignal2  + signal2comma + influxsignal3 + " " + str(1641024000 + 10*n) + "\n")
+            postgresqldata[j].append("example_measurement"+ str(table) +  ",example_tag," + (signal1 + "," if signal1!="" else "NULL,") + (signal2 + "," if signal2!="" else "NULL,") + (signal3 + "," if signal3!="" else "NULL,") + str(1641024000 + 10*n) + "\n")
+        if n % 100 == 0:
+            print(str(n) + "/" + str(datapoints))
+print("writitng")
 
-f = open("influxdata0.txt", "w")
-f.write(influxdata[0])
-f.close()
-f = open("influxdata1.txt", "w")
-f.write(influxdata[1])
-f.close()
-f = open("influxdata2.txt", "w")
-f.write(influxdata[2])
-f.close()
+def write_to_file(path, data_list):
+    f = open(path, "w")
+    for data in data_list:
+        f.write(data)
+    f.close()
 
-f = open("postgresqldata0.txt", "w")
-f.write(postgresqldata[0])
-f.close()
+write_to_file("influxdata0.txt", influxdata[0])
+write_to_file("influxdata1.txt", influxdata[1])
+write_to_file("influxdata2.txt", influxdata[2])
+write_to_file("postgresqldata0.txt", postgresqldata[0])
+write_to_file("postgresqldata1.txt", postgresqldata[1])
+write_to_file("postgresqldata2.txt", postgresqldata[2])
 
-f = open("postgresqldata1.txt", "w")
-f.write(postgresqldata[1])
-f.close()
-
-f = open("postgresqldata2.txt", "w")
-f.write(postgresqldata[2])
-f.close()
+#f = open("influxdata0.txt", "w")
+#f.write(influxdata[0])
+#f.close()
+#f = open("influxdata1.txt", "w")
+#f.write(influxdata[1])
+#f.close()
+#f = open("influxdata2.txt", "w")
+#f.write(influxdata[2])
+#f.close()
+#
+#f = open("postgresqldata0.txt", "w")
+#f.write(postgresqldata[0])
+#f.close()
+#
+#f = open("postgresqldata1.txt", "w")
+#f.write(postgresqldata[1])
+#f.close()
+#
+#f = open("postgresqldata2.txt", "w")
+#f.write(postgresqldata[2])
+#f.close()
 
 #import matplotlib.pyplot as plt
 
